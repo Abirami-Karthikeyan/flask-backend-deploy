@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="center-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <input type="text" id="userid" placeholder="User ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="mainPage" class="hidden">
+
+  <!-- NAVBAR -->
+  <nav>
+    <h3>My Website</h3>
+    <div class="hamburger" onclick="toggleMenu()">
+      &#9776;
+    </div>
+    <ul id="nav-links">
+      <li onclick="showSection('contact')">Contact</li>
+      <li onclick="showSection('query')">Query</li>
+      <li onclick="showSection('feedback')">Feedback</li>
+      <li onclick="showSection('location')">Location</li>
+      <li onclick="showSection('admin')">Admin</li>
+      <li onclick="logout()">Logout</li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="section">
+  <h2>Contact Form</h2>
+
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+   <!-- QUERY FORM -->
+<section id="query" class="section hidden">
+  <h2>Query Form</h2>
+  <form id="queryForm">
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" placeholder="Your Query" required></textarea>
+    <button type="submit">Submit Query</button>
+  </form>
+</section>
+
+<!-- FEEDBACK FORM -->
+<section id="feedback" class="section hidden">
+  <h2>Feedback Form</h2>
+  <form id="feedbackForm">
+    <select name="rating" required>
+      <option value="">Rate our service</option>
+      <option>Excellent</option>
+      <option>Good</option>
+      <option>Average</option>
+      <option>Poor</option>
+    </select>
+    <textarea name="message" placeholder="Your Feedback" required></textarea>
+    <button type="submit">Submit Feedback</button>
+  </form>
+</section>
+
+    <!-- LOCATION -->
+    <section id="location" class="section hidden">
+      <h2>Our Location</h2>
+      <iframe
+  src="https://www.google.com/maps?q=10.9776,79.8446&z=17&output=embed"
+  loading="lazy">
+</iframe>
+
+
+    </section>
+
+   
+    <!-- ADMIN PANEL -->
+<section id="admin" class="section hidden">
+  <h2>Admin Dashboard</h2>
+
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+      <p onclick="loadAdminData('contact')">📩 View Contacts</p>
+      <p onclick="loadAdminData('query')">❓ View Queries</p>
+      <p onclick="loadAdminData('feedback')">⭐ View Feedback</p>
+      <p onclick="logout()">🚪 Logout</p>
+    </div>
+
+    <!-- Main content -->
+    <div class="admin-content">
+      <h3 id="admin-title">Select a section</h3>
+      <div id="admin-table"></div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+</div>
+<script src="{{ url_for('static', filename='scriptt.js') }}"></script>
+
+</body>
+</html>
